@@ -24,4 +24,4 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  database: 'keystroke_dynamics_production'
