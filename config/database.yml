@@ -24,4 +24,4 @@ test:
 
 production:
   <<: *default
-  url: <%= URI.encode(ENV['DATABASE_URL'] )%>
+  url: <%= URI.encode(ENV['DATABASE_URL'] || 'keystroke_dynamics_production' )%>
