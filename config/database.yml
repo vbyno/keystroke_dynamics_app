@@ -24,4 +24,4 @@ test:
 
 production:
   <<: *default
-  url: ENV.fetch("DATABASE_URL")
+  url: <%= URI.encode(ENV['DATABASE_URL'] )%>
