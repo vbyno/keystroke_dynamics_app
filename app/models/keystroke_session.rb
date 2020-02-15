@@ -1,0 +1,2 @@
+class KeystrokeSession < ApplicationRecord
+end
