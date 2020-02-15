@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_02_15_090721) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "keystroke_sessions", force: :cascade do |t|
     t.text "inputs"
     t.datetime "created_at", precision: 6, null: false
