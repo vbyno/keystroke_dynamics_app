@@ -24,4 +24,4 @@ test:
 
 production:
   <<: *default
-  database: 'keystroke_dynamics_production'
+  url: ENV.fetch("DATABASE_URL")
