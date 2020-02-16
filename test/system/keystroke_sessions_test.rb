@@ -14,7 +14,7 @@ class KeystrokeSessionsTest < ApplicationSystemTestCase
     visit keystroke_sessions_url
     click_on "New Keystroke Session"
 
-    fill_in "Inputs", with: @keystroke_session.inputs
+    fill_in "text", with: @keystroke_session.text
     click_on "Create Keystroke session"
 
     assert_text "Keystroke session was successfully created"
@@ -25,7 +25,7 @@ class KeystrokeSessionsTest < ApplicationSystemTestCase
     visit keystroke_sessions_url
     click_on "Edit", match: :first
 
-    fill_in "Inputs", with: @keystroke_session.inputs
+    fill_in "text", with: @keystroke_session.text
     click_on "Update Keystroke session"
 
     assert_text "Keystroke session was successfully updated"

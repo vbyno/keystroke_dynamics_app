@@ -24,6 +24,7 @@ class KeystrokeSessionsController < ApplicationController
   # POST /keystroke_sessions
   # POST /keystroke_sessions.json
   def create
+    binding.pry
     @keystroke_session = KeystrokeSession.new(keystroke_session_params)
 
     respond_to do |format|
@@ -69,6 +70,6 @@ class KeystrokeSessionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def keystroke_session_params
-      params.require(:keystroke_session).permit(:inputs)
+      params.require(:keystroke_session).permit(:text, :keystrokes)
     end
 end

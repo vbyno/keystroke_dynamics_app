@@ -16,7 +16,8 @@ ActiveRecord::Schema.define(version: 2020_02_15_090721) do
   enable_extension "plpgsql"
 
   create_table "keystroke_sessions", force: :cascade do |t|
-    t.text "inputs"
+    t.text "text", null: false
+    t.text "keystrokes", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

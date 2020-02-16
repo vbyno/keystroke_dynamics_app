@@ -17,7 +17,7 @@ class KeystrokeSessionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create keystroke_session" do
     assert_difference('KeystrokeSession.count') do
-      post keystroke_sessions_url, params: { keystroke_session: { inputs: @keystroke_session.inputs } }
+      post keystroke_sessions_url, params: { keystroke_session: { text: @keystroke_session.text } }
     end
 
     assert_redirected_to keystroke_session_url(KeystrokeSession.last)
@@ -34,7 +34,7 @@ class KeystrokeSessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update keystroke_session" do
-    patch keystroke_session_url(@keystroke_session), params: { keystroke_session: { inputs: @keystroke_session.inputs } }
+    patch keystroke_session_url(@keystroke_session), params: { keystroke_session: { text: @keystroke_session.text } }
     assert_redirected_to keystroke_session_url(@keystroke_session)
   end
 

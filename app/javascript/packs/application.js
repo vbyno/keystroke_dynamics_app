@@ -10,6 +10,22 @@ require("channels")
 
 import '../stylesheets/application'
 import './bootstrap_custom.js'
+import $ from 'jquery';
+
+$(document).ready(function(){
+  var keystrokes = [];
+
+  $('#text').keydown(function (e) {
+      keystrokes.push(`${$.now()} KeyDown ${e.keyCode}`);
+    }).keyup(function (e) {
+      keystrokes.push(`${$.now()} KeyUp ${e.keyCode}`);
+    });
+
+  $('#keystroke_session_form').submit(function(e) {
+    $('#keystrokes').val(keystrokes.join(";"));
+  });
+});
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

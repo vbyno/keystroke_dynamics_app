@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Inputs</th>
+      <th>text</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +13,7 @@
   <tbody>
     <% @keystroke_sessions.each do |keystroke_session| %>
       <tr>
-        <td><%= keystroke_session.inputs %></td>
+        <td><%= keystroke_session.text %></td>
         <td><%= link_to 'Show', keystroke_session %></td>
         <td><%= link_to 'Edit', edit_keystroke_session_path(keystroke_session) %></td>
         <td><%= link_to 'Destroy', keystroke_session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
