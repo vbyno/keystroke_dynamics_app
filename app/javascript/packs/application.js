@@ -41,6 +41,8 @@ $(document).ready(function(){
       let text = e.target.value;
       highlight(text, e.target);
       $keystrokeSubmit.prop('disabled', !(text == initialText));
+    }).bind("cut copy paste",function(e) {
+      e.preventDefault();
     });
 
   $('#keystroke_session_form').submit(function(e) {
