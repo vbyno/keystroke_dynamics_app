@@ -9,6 +9,8 @@ class KeystrokeSession < ApplicationRecord
     created_at: 'ReviewDate'
   }.freeze
 
+  belongs_to :user, foreign_key: :user_uuid, primary_key: :uuid
+
   def self.to_csv
     CSV.generate(headers: true) do |csv|
       csv << ATTRIBUTES.values
