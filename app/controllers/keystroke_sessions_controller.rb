@@ -1,5 +1,6 @@
 class KeystrokeSessionsController < ApplicationController
   before_action :set_keystroke_session, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @keystroke_sessions = KeystrokeSession.all
@@ -9,11 +10,13 @@ class KeystrokeSessionsController < ApplicationController
   end
 
   def new
+    @input_text = InputText.all.take!
     @keystroke_session = KeystrokeSession.new
   end
 
   def create
     @keystroke_session = KeystrokeSession.new(keystroke_session_params)
+    @keystroke_session.user_id = current_user.uuid
 
     respond_to do |format|
       if @keystroke_session.save

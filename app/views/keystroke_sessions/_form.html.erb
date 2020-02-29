@@ -1,4 +1,4 @@
-<%= form_with(model: keystroke_session, local: true, id: 'keystroke_session_form') do |form| %>
+<%= form_with(model: keystroke_session, local: true, id: 'keystroke_session_form', class:'col-8') do |form| %>
   <% if keystroke_session.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(keystroke_session.errors.count, "error") %> prohibited this keystroke_session from being saved:</h2>
@@ -11,13 +11,18 @@
     </div>
   <% end %>
 
+  <h1>Please, input text</h1>
+
   <div class="field">
-    <%= form.text_area :text, class: 'text', id: 'text' %>
+    <p>
+      <%= @input_text.text %>
+    </p>
+    <%= form.text_area :text, autofocus: true, class: 'text', id: 'text', cols: "86", rows: "10" %>
   </div>
 
   <%= form.hidden_field(:keystrokes, id: 'keystrokes') %>
 
-  <div class="actions">
-    <%= form.submit :Submit, class: 'btn btn-success' %>
+  <div class="actions text-right">
+    <%= form.submit :Submit, class: 'btn btn-success', disabled: true %>
   </div>
 <% end %>

@@ -1,0 +1,2 @@
+class InputText < ApplicationRecord
+end
