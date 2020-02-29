@@ -1,9 +1,9 @@
 class KeystrokeSessionsController < ApplicationController
-  before_action :set_keystroke_session, only: [:show, :edit, :update, :destroy]
+  before_action :set_keystroke_session, only: [:show, :destroy]
   before_action :authenticate_user!
 
   def index
-    @keystroke_sessions = KeystrokeSession.where(user_uuid: current_user.uuid).all
+    @keystroke_sessions = keystroke_sessions.all
   end
 
   def show
@@ -38,9 +38,12 @@ class KeystrokeSessionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def keystroke_sessions
+      KeystrokeSession.where(user_uuid: current_user.uuid)
+    end
+
     def set_keystroke_session
-      @keystroke_session = KeystrokeSession.find(params[:id])
+      @keystroke_session = keystroke_sessions.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

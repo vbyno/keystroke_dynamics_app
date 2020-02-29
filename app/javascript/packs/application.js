@@ -14,11 +14,24 @@ import $ from 'jquery';
 
 $(document).ready(function(){
   let keystrokes = [];
-  let inputTextExample = null;
+  let $initialText = document.getElementById("input-text-example-text");
+  let initialText = null;
 
   if (document.getElementById("input-text-example-text")) {
-    inputTextExample = document.getElementById("input-text-example-text").innerHTML.trim();
+    initialText = $initialText.innerHTML.trim();
   };
+
+  function highlight(text, target) {
+    let index = initialText.indexOf(text);
+
+    if (index >= 0) {
+     $initialText.innerHTML =
+      `${initialText.substring(0, index)}<span class='highlight'>${initialText.substring(index, index + text.length)}</span>${initialText.substring(index + text.length)}`;
+      target.classList.remove("mistake")
+    } else {
+      target.classList.add("mistake")
+    };
+  }
 
   let $keystrokeSubmit = $('#keystroke-submit');
 
@@ -26,7 +39,9 @@ $(document).ready(function(){
       keystrokes.push(`${$.now()} KeyDown ${e.keyCode}`);
     }).keyup(function (e) {
       keystrokes.push(`${$.now()} KeyUp ${e.keyCode}`);
-      $keystrokeSubmit.prop('disabled', !(e.target.value == inputTextExample));
+      let text = e.target.value;
+      highlight(text, e.target);
+      $keystrokeSubmit.prop('disabled', !(text == initialText));
     });
 
   $('#keystroke_session_form').submit(function(e) {
