@@ -3,7 +3,7 @@ class KeystrokeSessionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @keystroke_sessions = KeystrokeSession.all
+    @keystroke_sessions = KeystrokeSession.where(user_uuid: current_user.uuid).all
   end
 
   def show
@@ -16,7 +16,7 @@ class KeystrokeSessionsController < ApplicationController
 
   def create
     @keystroke_session = KeystrokeSession.new(keystroke_session_params)
-    @keystroke_session.user_id = current_user.uuid
+    @keystroke_session.user_uuid = current_user.uuid
 
     respond_to do |format|
       if @keystroke_session.save

@@ -14,3 +14,7 @@ To run migrations
 ```
 heroku run rake db:migrate
 ```
+
+```
+./bin/webpack-dev-server
+```

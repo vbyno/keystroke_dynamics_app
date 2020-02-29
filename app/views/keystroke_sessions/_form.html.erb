@@ -13,8 +13,8 @@
 
   <h1>Please, input text</h1>
 
-  <div class="field">
-    <p>
+  <div id="input-text-example">
+    <p id="input-text-example-text">
       <%= @input_text.text %>
     </p>
     <%= form.text_area :text, autofocus: true, class: 'text', id: 'text', cols: "86", rows: "10" %>
@@ -23,6 +23,6 @@
   <%= form.hidden_field(:keystrokes, id: 'keystrokes') %>
 
   <div class="actions text-right">
-    <%= form.submit :Submit, class: 'btn btn-success', disabled: true %>
+    <%= form.submit :Submit, id: 'keystroke-submit', class: 'btn btn-success', disabled: true %>
   </div>
 <% end %>

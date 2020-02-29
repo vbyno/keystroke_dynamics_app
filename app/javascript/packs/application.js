@@ -13,16 +13,25 @@ import './bootstrap_custom.js'
 import $ from 'jquery';
 
 $(document).ready(function(){
-  var keystrokes = [];
+  let keystrokes = [];
+  let inputTextExample = null;
+
+  if (document.getElementById("input-text-example-text")) {
+    inputTextExample = document.getElementById("input-text-example-text").innerHTML.trim();
+  };
+
+  let $keystrokeSubmit = $('#keystroke-submit');
 
   $('#text').keydown(function (e) {
       keystrokes.push(`${$.now()} KeyDown ${e.keyCode}`);
     }).keyup(function (e) {
       keystrokes.push(`${$.now()} KeyUp ${e.keyCode}`);
+      $keystrokeSubmit.prop('disabled', !(e.target.value == inputTextExample));
     });
 
   $('#keystroke_session_form').submit(function(e) {
     $('#keystrokes').val(keystrokes.join(";"));
+    $keystrokeSubmit.prop('disabled', true);
   });
 });
 
