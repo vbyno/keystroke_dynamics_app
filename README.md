@@ -18,3 +18,5 @@ heroku run rake db:migrate
 ```
 ./bin/webpack-dev-server
 ```
+
+yarn remove turbolinks
