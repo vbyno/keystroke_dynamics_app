@@ -4,6 +4,11 @@ class KeystrokeSessionsController < ApplicationController
 
   def index
     @keystroke_sessions = keystroke_sessions.all
+
+    respond_to do |format|
+      format.html { render :index }
+      format.csv { send_data @keystroke_sessions.to_csv, filename: "keystroke_sessions-#{Date.today}.csv" }
+    end
   end
 
   def show
@@ -39,7 +44,9 @@ class KeystrokeSessionsController < ApplicationController
 
   private
     def keystroke_sessions
-      KeystrokeSession.where(user_uuid: current_user.uuid)
+      scope = KeystrokeSession.all
+      scope = scope.where(user_uuid: current_user.uuid) unless current_user.admin?
+      scope
     end
 
     def set_keystroke_session
